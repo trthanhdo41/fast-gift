@@ -234,6 +234,13 @@
           word-break: break-word;
           display: block;
           box-shadow: 0 2px 8px rgba(29,128,159,0.07);
+          opacity: 0;
+          transform: translateY(16px) scale(0.98);
+          animation: fadeInMsg 0.45s cubic-bezier(.4,0,.2,1) forwards;
+        }
+        @keyframes fadeInMsg {
+          from { opacity: 0; transform: translateY(16px) scale(0.98); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
         }
         .ai-msg {
           background: #e0eafc;
@@ -396,8 +403,8 @@
           <div class="form-group" style="margin-bottom:1rem;">
             <label>Yêu cầu logo:</label>
             <div id="logoToggleGroup" style="display:flex; gap:10px; margin-bottom:0.5rem;">
-              <button type="button" class="logo-toggle active" data-value="có sẵn">Logo có sẵn</button>
               <button type="button" class="logo-toggle" data-value="AI">Tạo với AI</button>
+              <button type="button" class="logo-toggle active" data-value="có sẵn">Logo có sẵn</button>
             </div>
             <div id="logoFileWrap" style="display:block; width:100%;">
               <label for="logoFile" class="custom-file-label">
@@ -455,6 +462,16 @@
         orderModal.style.display = 'flex';
         setTimeout(()=>orderModal.classList.add('show'), 10);
         document.body.style.overflow = 'hidden';
+        // Mặc định chọn "Tạo với AI"
+        logoToggles.forEach(b => b.classList.remove('active'));
+        logoToggles[0].classList.add('active'); // nút "Tạo với AI" (sau khi đổi vị trí)
+        logoOptionInput.value = 'AI';
+        logoFileWrap.style.display = 'none';
+        aiChatWrap.style.display = 'block';
+        logoDetail.style.display = 'none';
+        // Reset chat AI mỗi lần mở modal
+        aiChatInit();
+        aiChatWrap.dataset.inited = '1';
       });
     });
     function closeOrderModal() {
