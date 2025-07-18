@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Sản phẩm Fastgift.vn - Quà tặng doanh nghiệp, tổ chức, cá nhân" />
+    <meta name="author" content="Fastgift.vn" />
+    <title>Sản phẩm - Fastgift.vn</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        body {
+            background: #f8f9fa;
+        }
+        .product-list {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 1rem 4rem 1rem;
+        }
+        .product-list h1 {
+            text-align: center;
+            color: #1D809F;
+            font-weight: 900;
+            margin-bottom: 2.5rem;
+            letter-spacing: 2px;
+        }
+        .products-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            justify-content: center;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 6px 32px rgba(29,128,159,0.12);
+            width: 320px;
+            padding: 1.5rem 1.2rem 2rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: box-shadow 0.2s;
+        }
+        .product-card:hover {
+            box-shadow: 0 12px 40px rgba(29,128,159,0.18);
+        }
+        .product-card img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1.2rem;
+        }
+        .product-card h3 {
+            color: #1D809F;
+            font-weight: 700;
+            margin-bottom: 0.7rem;
+            font-size: 1.25rem;
+            text-align: center;
+        }
+        .product-card p {
+            color: #333;
+            font-size: 1.05rem;
+            text-align: center;
+            margin-bottom: 1.2rem;
+        }
+        .product-card .btn {
+            background: #1D809F;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: background 0.2s;
+            margin-top: auto;
+            display: block;
+        }
+        .product-card .btn:hover {
+            background: #155d74;
+        }
+        @media (max-width: 900px) {
+            .products-row { flex-direction: column; align-items: center; }
+            .product-card { width: 95%; }
+        }
+        /* Ẩn spin button trên Chrome, Safari, Edge */
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        /* Ẩn spin button trên Firefox */
+        input[type=number] {
+          -moz-appearance: textfield;
+        }
+        .logo-toggle {
+          flex: 1;
+          padding: 0.6rem 0;
+          border: 2px solid #1D809F;
+          background: #fff;
+          color: #1D809F;
+          font-weight: 600;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 1rem;
+          transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+          outline: none;
+        }
+        .logo-toggle.active, .logo-toggle:focus {
+          background: #1D809F;
+          color: #fff;
+          box-shadow: 0 2px 12px rgba(29,128,159,0.12);
+        }
+        .custom-file-label {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(90deg, #e0eafc 0%, #cfdef3 100%);
+          color: #1D809F;
+          border: 2px dashed #1D809F;
+          border-radius: 8px;
+          padding: 0.7rem 1rem;
+          cursor: pointer;
+          font-weight: 600;
+          font-size: 1rem;
+          transition: background 0.2s, border 0.2s;
+          margin-bottom: 0.5rem;
+        }
+        .custom-file-label:hover, .custom-file-label:focus {
+          background: linear-gradient(90deg, #d1eaff 0%, #b6e0fe 100%);
+          border: 2px solid #1D809F;
+        }
+        #logoFile {
+          display: none;
+        }
+        #logoFileText {
+          pointer-events: none;
+        }
+        .btn-gradient {
+          background: linear-gradient(270deg, #1D809F, #e0eafc, #bfc9d9, #1D809F);
+          background-size: 400% 400%;
+          color: #fff;
+          border: none;
+          border-radius: 8px;
+          padding: 0.75rem 2.5rem;
+          font-size: 1.1rem;
+          font-weight: 600;
+          letter-spacing: 1px;
+          box-shadow: 0 2px 12px rgba(29,128,159,0.10);
+          transition: box-shadow 0.2s;
+          margin-top: auto;
+          display: inline-block;
+          animation: gradientMove 2.5s ease-in-out infinite;
+          background-position: 0% 50%;
+          text-shadow: 0 2px 8px rgba(29,128,159,0.25), 0 1px 0 #333;
+        }
+        @keyframes gradientMove {
+          0% {background-position: 0% 50%;}
+          50% {background-position: 100% 50%;}
+          100% {background-position: 0% 50%;}
+        }
+        .btn-gradient:hover, .btn-gradient:focus {
+          box-shadow: 0 4px 20px rgba(32,201,151,0.18);
+          filter: brightness(1.08);
+        }
+        .modal {
+          display: none;
+          position: fixed;
+          z-index: 9999;
+          left: 0; top: 0;
+          width: 100vw; height: 100vh;
+          background: rgba(0,0,0,0.35);
+          align-items: center; justify-content: center;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.35s cubic-bezier(.4,0,.2,1);
+        }
+        .modal.show {
+          display: flex;
+          opacity: 1;
+          pointer-events: auto;
+        }
+        .modal-content {
+          background: #fff;
+          border-radius: 16px;
+          max-width: 400px;
+          width: 95%;
+          margin: auto;
+          padding: 2rem 1.5rem;
+          position: relative;
+          box-shadow: 0 8px 32px rgba(29,128,159,0.18);
+          transform: scale(0.92);
+          opacity: 0;
+          transition: transform 0.35s cubic-bezier(.4,0,.2,1), opacity 0.35s cubic-bezier(.4,0,.2,1);
+        }
+        .modal.show .modal-content {
+          transform: scale(1);
+          opacity: 1;
+        }
+        .modal-content form > div:last-child {
+          text-align: center;
+        }
+        @media (max-width: 450px) {
+          .modal-content { max-width: 98vw; padding: 1.2rem 0.5rem; }
+        }
+        /* Chat AI Styles */
+        .ai-chat-box {
+          background: #fff;
+          border-radius: 14px;
+          padding: 1.3rem 1.2rem 1rem 1.2rem;
+          box-shadow: 0 4px 24px rgba(29,128,159,0.10);
+          margin-top: 0.7rem;
+          border: 1.5px solid #e0eafc;
+          max-width: 651px;
+          width: 100%;
+          position: relative;
+        }
+        .ai-chat-messages {
+          max-height: 210px;
+          overflow-y: auto;
+          margin-bottom: 0.2rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.7rem;
+        }
+        .ai-msg, .user-msg {
+          padding: 0.7rem 1.1rem;
+          border-radius: 14px;
+          max-width: 85%;
+          font-size: 1.07rem;
+          word-break: break-word;
+          display: block;
+          box-shadow: 0 2px 8px rgba(29,128,159,0.07);
+        }
+        .ai-msg {
+          background: #e0eafc;
+          color: #1D809F;
+          margin-left: 0;
+          margin-right: auto;
+          font-weight: 600;
+        }
+        .user-msg {
+          background: #fff;
+          color: #333;
+          margin-right: 0;
+          margin-left: auto;
+          border: 1px solid #e0eafc;
+        }
+        .ai-avatar, .user-avatar {
+          width: 32px; height: 32px;
+          border-radius: 50%;
+          background: #fff;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 1.3rem;
+          font-weight: 700;
+          box-shadow: 0 1px 4px rgba(29,128,159,0.10);
+        }
+        .ai-avatar { background: #1D809F; color: #fff; }
+        .user-avatar { background: #bfc9d9; color: #1D809F; }
+        #aiChatInput {
+          font-size: 1rem;
+          width: 100%;
+          min-width: 0;
+          max-width: 100%;
+          border-radius: 14px;
+          box-shadow: none;
+          background: #f8fafd;
+          color: #222;
+          border: 1.5px solid #e0eafc;
+          padding: 0.5rem 3.2rem 0.5rem 1rem;
+        }
+        #aiChatAcceptBtn {
+          opacity: 0;
+          transition: opacity 0.5s cubic-bezier(.4,0,.2,1);
+          display: none;
+          background: #22bb33;
+          color: #fff;
+          border: none;
+          border-radius: 8px;
+          padding: 0.7rem 1.6rem;
+          font-size: 1.12rem;
+          font-weight: 700;
+          letter-spacing: 1px;
+          margin: 0.9rem auto 0.5rem auto;
+          box-shadow: 0 2px 8px rgba(34,187,51,0.10);
+          width: 90%;
+          min-width: 160px;
+          max-width: 320px;
+          cursor: pointer;
+          transition: background 0.18s, filter 0.18s, opacity 0.5s cubic-bezier(.4,0,.2,1);
+        }
+        #aiChatAcceptBtn.visible {
+          opacity: 1;
+        }
+        #aiChatAcceptBtn:hover, #aiChatAcceptBtn:focus {
+          background: #1a8c27;
+          filter: brightness(1.08);
+        }
+        .btn-send-chat {
+          background: #1D809F;
+          color: #fff;
+          border: none;
+          border-radius: 50%;
+          width: 32px;
+          height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.15rem;
+          font-weight: 700;
+          box-shadow: 0 1px 4px rgba(29,128,159,0.10);
+          padding: 0;
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        .btn-send-chat:hover, .btn-send-chat:focus {
+          background: #155d74;
+        }
+        .ai-chat-accept-btn {
+          display: none;
+          background: #1D809F;
+          color: #fff;
+          border: none;
+          border-radius: 8px;
+          padding: 0.75rem 2rem;
+          font-size: 1.1rem;
+          font-weight: 600;
+          letter-spacing: 1px;
+          transition: background 0.2s;
+          margin-top: 0.7rem;
+          display: block;
+        }
+        .ai-chat-accept-btn:hover {
+          background: #155d74;
+        }
+    </style>
+</head>
+<body>
+    <nav style="background: #1D809F; padding: 1rem 0;">
+        <div style="max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;">
+            <a href="index.html" style="color: #fff; font-weight: 900; font-size: 1.3rem; letter-spacing: 2px; text-decoration: none;">FASTGIFT.VN</a>
+            <a href="index.html" style="color: #fff; text-decoration: none; font-size: 1rem;">Trang chủ</a>
+        </div>
+    </nav>
+    <div class="product-list">
+        <h1>Sản phẩm</h1>
+        <div class="products-row">
+            <div class="product-card" data-name="Bộ ấm trà" data-desc="Bộ ấm trà sứ trắng cao cấp, thiết kế sang trọng, phù hợp làm quà tặng doanh nghiệp.">
+                <img src="assets/img/portfolio-1.jpg" alt="Bộ ấm trà">
+                <h3>🍵 Bộ ấm trà</h3>
+                <p>Bộ ấm trà sứ trắng cao cấp, thiết kế sang trọng, phù hợp làm quà tặng doanh nghiệp.</p>
+                <button class="btn order-btn">Đặt hàng</button>
+            </div>
+            <div class="product-card" data-name="Bình" data-desc="Bình pha lê cao cấp, khắc logo theo yêu cầu, món quà ý nghĩa cho đối tác.">
+                <img src="assets/img/portfolio-2.jpg" alt="Bình">
+                <h3>🏺 Bình</h3>
+                <p>Bình pha lê cao cấp, khắc logo theo yêu cầu, món quà ý nghĩa cho đối tác.</p>
+                <button class="btn order-btn">Đặt hàng</button>
+            </div>
+            <div class="product-card" data-name="Túi da" data-desc="Túi da thật cao cấp, thiết kế hiện đại, cá nhân hóa theo tên hoặc logo.">
+                <img src="assets/img/portfolio-3.jpg" alt="Túi da">
+                <h3>👜 Túi da</h3>
+                <p>Túi da thật cao cấp, thiết kế hiện đại, cá nhân hóa theo tên hoặc logo.</p>
+                <button class="btn order-btn">Đặt hàng</button>
+            </div>
+        </div>
+    </div>
+    <!-- Modal đặt hàng -->
+    <div id="orderModal" class="modal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.35); align-items:center; justify-content:center;">
+      <div class="modal-content" style="background:#fff; border-radius:16px; max-width:700px; width:95%; margin:auto; padding:2rem 1.5rem; position:relative;">
+        <span class="close" style="position:absolute; right:18px; top:12px; font-size:2rem; cursor:pointer; color:#1D809F;" onclick="closeOrderModal()">&times;</span>
+        <h2 id="modalProductName" style="color:#1D809F; font-size:1.3rem; font-weight:700; margin-bottom:0.5rem;"></h2>
+        <div id="modalProductDesc" style="color:#333; font-size:1rem; margin-bottom:1.2rem;"></div>
+        <form id="orderForm">
+          <div class="form-group" style="margin-bottom:1rem;">
+            <label for="customerName">Họ tên:</label>
+            <input type="text" id="customerName" name="customerName" required style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
+          </div>
+          <div class="form-group" style="margin-bottom:1rem;">
+            <label for="customerPhone">Số điện thoại:</label>
+            <input type="tel" id="customerPhone" name="customerPhone" required style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
+          </div>
+          <div class="form-group" style="margin-bottom:1rem;">
+            <label for="quantity">Số lượng:</label>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <button type="button" id="minusBtn" style="width:32px; height:32px; border:none; background:#eee; border-radius:6px; font-size:1.2rem;">-</button>
+              <input type="number" id="quantity" name="quantity" min="1" value="1" required style="width:60px; text-align:center; padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
+              <button type="button" id="plusBtn" style="width:32px; height:32px; border:none; background:#eee; border-radius:6px; font-size:1.2rem;">+</button>
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:1rem;">
+            <label>Yêu cầu logo:</label>
+            <div id="logoToggleGroup" style="display:flex; gap:10px; margin-bottom:0.5rem;">
+              <button type="button" class="logo-toggle active" data-value="có sẵn">Logo có sẵn</button>
+              <button type="button" class="logo-toggle" data-value="AI">Tạo với AI</button>
+            </div>
+            <div id="logoFileWrap" style="display:block; width:100%;">
+              <label for="logoFile" class="custom-file-label">
+                <span id="logoFileText">Chọn tệp logo...</span>
+                <input type="file" id="logoFile" name="logoFile" style="display:none;">
+              </label>
+            </div>
+            <div id="aiChatWrap" style="display:none;">
+              <div class="ai-chat-box">
+                <div id="aiChatMessages" class="ai-chat-messages"></div>
+                <div id="aiTypingIndicator" style="display:none; color:#1D809F; font-style:italic; margin-left:2px; margin-bottom:2px;">
+                  <span class="ai-msg" style="background:#e0eafc; color:#1D809F; font-style:italic; opacity:0.8;">FastGiftAI đang trả lời<span id="aiTypingDots"></span></span>
+                </div>
+                <div style="width:100%;">
+                  <div style="position:relative; width:100%; margin-top:0.7rem;">
+                    <textarea id="aiChatInput" placeholder="Nhập ý tưởng..." style="min-height:44px; max-height:120px; resize:none; padding:0.5rem 3.2rem 0.5rem 1rem; border-radius:14px; box-shadow:none; background:#f8fafd; color:#222; border:1.5px solid #e0eafc; font-size:1rem; line-height:1.4; overflow-y:auto; width:100%;"></textarea>
+                    <button type="button" class="btn-send-chat" id="aiChatSendBtn" style="position:absolute; right:10px; top:50%; transform:translateY(-50%); border:none; border-radius:50%; width:32px; height:32px; background:#1D809F; color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.15rem; font-weight:700; box-shadow:0 1px 4px rgba(29,128,159,0.10); padding:0;">&#10148;</button>
+                  </div>
+                </div>
+                <div style="text-align:center; margin-top:0.7rem;">
+                  <button type="button" class="btn-gradient" id="aiChatAcceptBtn" style="display:none;">Chốt ý tưởng này</button>
+                </div>
+              </div>
+            </div>
+            <input type="text" id="logoDetail" name="logoDetail" placeholder="Mô tả ý tưởng logo mong muốn..." style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc; display:none;">
+            <input type="hidden" id="logoOption" name="logoOption" value="có sẵn">
+          </div>
+          <div style="text-align:center;">
+            <button type="submit" class="btn-gradient">Gửi đơn hàng</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Modal thông báo thành công -->
+    <div id="successModal" class="modal" style="display:none; position:fixed; z-index:99999; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.35); align-items:center; justify-content:center;">
+      <div class="modal-content" style="background:#fff; border-radius:16px; max-width:350px; width:95%; margin:auto; padding:2rem 1.5rem; text-align:center; position:relative;">
+        <span class="close" style="position:absolute; right:18px; top:12px; font-size:2rem; cursor:pointer; color:#1D809F;" onclick="closeSuccessModal()">&times;</span>
+        <div style="font-size:3rem; color:#1D809F; margin-bottom:1rem;">✔️</div>
+        <div id="successMsg" style="font-size:1.1rem; color:#1D809F; font-weight:600;">Đã gửi đơn hàng thành công!</div>
+      </div>
+    </div>
+    <script>
+    // Mở modal đặt hàng với thông tin sản phẩm
+    const orderBtns = document.querySelectorAll('.order-btn');
+    const orderModal = document.getElementById('orderModal');
+    const modalProductName = document.getElementById('modalProductName');
+    const modalProductDesc = document.getElementById('modalProductDesc');
+    let currentProduct = '';
+    orderBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const card = this.closest('.product-card');
+        currentProduct = card.getAttribute('data-name');
+        modalProductName.textContent = card.getAttribute('data-name');
+        modalProductDesc.textContent = card.getAttribute('data-desc');
+        orderModal.style.display = 'flex';
+        setTimeout(()=>orderModal.classList.add('show'), 10);
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    function closeOrderModal() {
+      orderModal.classList.remove('show');
+      setTimeout(()=>{
+        orderModal.style.display = 'none';
+        document.body.style.overflow = '';
+      }, 350);
+    }
+    // Tăng giảm số lượng
+    const minusBtn = document.getElementById('minusBtn');
+    const plusBtn = document.getElementById('plusBtn');
+    const quantityInput = document.getElementById('quantity');
+    minusBtn.onclick = () => { let v = parseInt(quantityInput.value)||1; if(v>1) quantityInput.value = v-1; };
+    plusBtn.onclick = () => { let v = parseInt(quantityInput.value)||1; quantityInput.value = v+1; };
+    // Toggle chọn logo đẹp
+    const logoToggles = document.querySelectorAll('.logo-toggle');
+    const logoOptionInput = document.getElementById('logoOption');
+    const logoFileWrap = document.getElementById('logoFileWrap');
+    const aiChatWrap = document.getElementById('aiChatWrap');
+    const logoDetail = document.getElementById('logoDetail');
+    logoToggles.forEach(btn => {
+      btn.addEventListener('click', function() {
+        logoToggles.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        logoOptionInput.value = this.getAttribute('data-value');
+        if(this.getAttribute('data-value') === 'có sẵn') {
+          logoFileWrap.style.display = 'block';
+          aiChatWrap.style.display = 'none';
+          logoDetail.style.display = 'none';
+        } else {
+          logoFileWrap.style.display = 'none';
+          aiChatWrap.style.display = 'block';
+          logoDetail.style.display = 'none';
+          // Reset chat nếu lần đầu mở
+          if(!aiChatWrap.dataset.inited) {
+            aiChatInit();
+            aiChatWrap.dataset.inited = '1';
+          } else {
+            aiChatInit();
+          }
+        }
+      });
+    });
+    // Hiển thị tên file đã chọn
+    const logoFileInput = document.getElementById('logoFile');
+    const logoFileText = document.getElementById('logoFileText');
+    logoFileInput.addEventListener('change', function() {
+      if(this.files && this.files.length > 0) {
+        logoFileText.textContent = this.files[0].name;
+      } else {
+        logoFileText.textContent = 'Chọn tệp logo...';
+      }
+    });
+    // Gửi đơn hàng
+    const orderForm = document.getElementById('orderForm');
+    const successModal = document.getElementById('successModal');
+    const successMsg = document.getElementById('successMsg');
+    orderForm.onsubmit = function(e) {
+      e.preventDefault();
+      const name = document.getElementById('customerName').value;
+      closeOrderModal();
+      setTimeout(()=>{
+        successMsg.textContent = `Đã gửi đơn hàng cho ${name} thành công!`;
+        successModal.style.display = 'flex';
+        setTimeout(()=>successModal.classList.add('show'), 10);
+        document.body.style.overflow = 'hidden';
+        orderForm.reset();
+        quantityInput.value = 1;
+      }, 370);
+    };
+    function closeSuccessModal() {
+      successModal.classList.remove('show');
+      setTimeout(()=>{
+        successModal.style.display = 'none';
+        document.body.style.overflow = '';
+      }, 350);
+    }
+    // Đóng modal khi bấm ngoài
+    window.onclick = function(event) {
+      if(event.target === orderModal) closeOrderModal();
+      if(event.target === successModal) closeSuccessModal();
+    };
+
+    let aiChatStep = 0;
+    let aiChatData = {};
+    let chatHistory = [];
+    function aiChatInit() {
+      aiChatMessages.innerHTML = '';
+      aiChatStep = 0;
+      aiChatData = {};
+      chatHistory = [];
+      const welcome = "Xin chào! Tôi là Fastgift AI. Hãy cùng tạo ý tưởng logo nhé!\n\nBạn muốn tạo logo cho mục đích gì? (Ví dụ: tặng đối tác, sự kiện, cá nhân...)";
+      aiAddMsg('ai', welcome);
+      chatHistory.push({ role: 'assistant', content: welcome });
+      aiChatInput.placeholder = "Nhập ý tưởng...";
+      aiChatAcceptBtn.style.display = 'none';
+    }
+    function aiAddMsg(type, text) {
+      const div = document.createElement('div');
+      div.className = type === 'ai' ? 'ai-msg' : 'user-msg';
+      div.innerHTML = text.replace(/\n/g, '<br>');
+      aiChatMessages.appendChild(div);
+      aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+      // Nếu là AI và có từ 'chốt ý tưởng' thì hiện nút ngay sau tin nhắn này, fade-in và scroll
+      if (type === 'ai' && /chốt ý tưởng/i.test(text)) {
+        let btn = document.getElementById('aiChatAcceptBtn');
+        if (!btn) {
+          btn = document.createElement('button');
+          btn.type = 'button';
+          btn.id = 'aiChatAcceptBtn';
+          btn.textContent = 'Chốt ý tưởng này';
+          btn.className = '';
+          btn.style.display = 'block';
+          btn.onclick = function(){};
+          div.insertAdjacentElement('afterend', btn);
+          setTimeout(() => {
+            btn.classList.add('visible');
+            btn.scrollIntoView({ behavior: "smooth", block: "center" });
+          }, 30);
+        } else {
+          btn.style.display = 'block';
+          div.insertAdjacentElement('afterend', btn);
+          setTimeout(() => {
+            btn.classList.add('visible');
+            btn.scrollIntoView({ behavior: "smooth", block: "center" });
+          }, 30);
+        }
+      } else if (type === 'ai') {
+        const btn = document.getElementById('aiChatAcceptBtn');
+        if (btn) {
+          btn.style.display = 'none';
+          btn.classList.remove('visible');
+        }
+      }
+      // Lưu vào history
+      if (type === 'ai') {
+        chatHistory.push({ role: 'assistant', content: text });
+      } else if (type === 'user') {
+        chatHistory.push({ role: 'user', content: text });
+      }
+    }
+    // Tự động mở rộng textarea khi nhập
+    const aiChatInput = document.getElementById('aiChatInput');
+    aiChatInput.addEventListener('input', function() {
+      this.style.height = 'auto';
+      this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+      // Không auto-expand chiều ngang nữa
+    });
+    const aiChatSendBtn = document.getElementById('aiChatSendBtn');
+    const aiTypingIndicator = document.getElementById('aiTypingIndicator');
+    let aiTypingInterval = null;
+    function showAiTyping() {
+      aiTypingIndicator.style.display = 'block';
+      let dots = 0;
+      aiTypingInterval = setInterval(() => {
+        document.getElementById('aiTypingDots').textContent = '.'.repeat((dots++ % 3) + 1);
+      }, 400);
+    }
+    function hideAiTyping() {
+      aiTypingIndicator.style.display = 'none';
+      clearInterval(aiTypingInterval);
+      document.getElementById('aiTypingDots').textContent = '';
+    }
+  aiChatSendBtn.onclick = async function(e) {
+    e.preventDefault();
+    const message = aiChatInput.value.trim();
+    if (!message) return;
+
+    aiAddMsg('user', message);
+    aiChatInput.value = '';
+    aiChatInput.style.height = 'auto';
+
+    showAiTyping(); // Hiện hiệu ứng
+
+    try {
+      const response = await fetch('http://localhost:8080/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message, history: chatHistory })
+      });
+      const data = await response.json();
+      hideAiTyping(); // Ẩn hiệu ứng
+      if (data.reply) {
+        aiAddMsg('ai', data.reply);
+      } else {
+        aiAddMsg('ai', '❌ Không nhận được phản hồi từ AI.');
+      }
+    } catch (err) {
+      hideAiTyping(); // Ẩn hiệu ứng
+      aiAddMsg('ai', '❌ Có lỗi xảy ra khi kết nối với AI.');
+    }
+};
+
+    </script>
+    <footer class="footer text-center" style="background: #1D809F; color: #fff; padding: 2rem 0; margin-top: 3rem;">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <p style="margin: 0;">&copy; Fastgift.vn 2025 - Giải pháp quà tặng doanh nghiệp, tổ chức, cá nhân</p>
+        </div>
+    </footer>
+</body>
+</html> 
