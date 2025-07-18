@@ -442,8 +442,16 @@
     <div id="successModal" class="modal" style="display:none; position:fixed; z-index:99999; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.35); align-items:center; justify-content:center;">
       <div class="modal-content" style="background:#fff; border-radius:16px; max-width:350px; width:95%; margin:auto; padding:2rem 1.5rem; text-align:center; position:relative;">
         <span class="close" style="position:absolute; right:18px; top:12px; font-size:2rem; cursor:pointer; color:#1D809F;" onclick="closeSuccessModal()">&times;</span>
-        <div style="font-size:3rem; color:#1D809F; margin-bottom:1rem;">✔️</div>
+        <div style="margin-bottom: 1.2rem;">
+          <svg id="checkmark" width="70" height="70" viewBox="0 0 70 70">
+            <circle cx="35" cy="35" r="32" fill="#e6f9ed" stroke="#2ecc71" stroke-width="3"/>
+            <polyline points="22,38 32,48 48,26" fill="none" stroke="#2ecc71" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+              <animate attributeName="points" dur="0.5s" to="22,38 32,48 48,26" fill="freeze" />
+            </polyline>
+          </svg>
+        </div>
         <div id="successMsg" style="font-size:1.1rem; color:#1D809F; font-weight:600;">Đã gửi đơn hàng thành công!</div>
+        <div style="color: #555; font-size: 1rem; margin-top: 0.7rem;">Fastgift cảm ơn bạn đã tin tưởng lựa chọn dịch vụ của chúng tôi.<br>Đội ngũ Fastgift sẽ liên hệ lại bạn trong hôm nay để xác nhận và tư vấn chi tiết.</div>
       </div>
     </div>
     <script>
@@ -535,7 +543,7 @@
       const name = document.getElementById('customerName').value;
       closeOrderModal();
       setTimeout(()=>{
-        successMsg.textContent = `Đã gửi đơn hàng cho ${name} thành công!`;
+        successMsg.innerHTML = `Đơn hàng của <b>${name}</b> đã đặt thành công!`;
         successModal.style.display = 'flex';
         setTimeout(()=>successModal.classList.add('show'), 10);
         document.body.style.overflow = 'hidden';
